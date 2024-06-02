@@ -116,7 +116,7 @@ public class CalculatorService extends CalculatorServiceGrpc.CalculatorServiceIm
                 Calculator.ClientStreamResponse.Builder response = Calculator.ClientStreamResponse.
                         newBuilder();
                 response.setResult(result);
-                receivedData.forEach(data -> response.addReceivedData(data));
+                response.addAllData(receivedData);
                 responseObserver.onNext(response.build());
                 responseObserver.onCompleted();
             }
